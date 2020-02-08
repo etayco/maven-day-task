@@ -1,0 +1,8 @@
+.filters-container {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.filters-container .filter-checkbox {
+  margin: 0 10px;
+}

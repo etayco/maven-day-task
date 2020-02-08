@@ -1,0 +1,7 @@
+.daily-task {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border-radius: 0 5px 6px 0;
+}

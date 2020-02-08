@@ -1,0 +1,31 @@
+.team-member-row-container {
+  height: 40px;
+}
+
+.team-member-data {
+  height: 100%;
+  flex: 1;
+  background: #000000;
+  color: white;
+  border-radius: 8px 0 0 8px;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px 0 1px 3px;
+}
+
+.team-member-name {
+  flex: 4;
+}
+
+.team-member-data .material-icons {
+  flex: 1;
+}
+
+.task-data {
+  height: 100%;
+  flex: 2;
+  border-radius: 0 8px 8px 0;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px 3px 1px 0;
+}

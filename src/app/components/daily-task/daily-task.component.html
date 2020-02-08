@@ -1,1 +1,11 @@
-<p>daily-task works!</p>
+<div class="daily-task flex-row" [ngStyle]="{ 'background': task && task.color ? task.color : 'white'}">
+  <div class="flex-column" *ngIf="task && task !== null; else noTask">
+    {{task.name}}
+    <ng-container *ngIf="taskStatus"> - {{taskStatus}}</ng-container>
+  </div>
+  <ng-template #noTask>
+    <i class="material-icons flex-column">
+      help
+    </i>
+  </ng-template>
+</div>

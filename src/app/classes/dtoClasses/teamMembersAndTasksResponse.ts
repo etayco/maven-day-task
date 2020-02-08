@@ -1,7 +1,7 @@
 import {TeamMember} from '../team-member';
 import {Task} from '../task';
 
-export interface teamTeamMembersAndTasksResponse {
+export interface teamMembersAndTasksResponse {
   teamMembers: TeamMember[];
   tasks: Task[];
 }

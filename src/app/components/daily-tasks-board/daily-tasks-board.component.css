@@ -1,0 +1,15 @@
+.board-container {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+}
+
+.example-box {
+  /*display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;*/
+  cursor: move;
+}

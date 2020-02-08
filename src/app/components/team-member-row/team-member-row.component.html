@@ -1,1 +1,13 @@
-<p>team-member-row works!</p>
+<div class="team-member-row-container flex-row">
+  <div class="team-member-data flex-column">
+    <div class="flex-row">
+      <i class="material-icons flex-column">
+        account_circle
+      </i>
+      <div class="team-member-name flex-column">
+        {{teamMember.name}}
+      </div>
+    </div>
+  </div>
+  <app-daily-task class="task-data flex-column" [taskId]="teamMember.currentTaskId"></app-daily-task>
+</div>

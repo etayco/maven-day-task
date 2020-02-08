@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {TeamMember} from '../../classes/team-member';
+import {CacheService} from '../../services/cache.service';
 
 @Component({
   selector: 'app-team-member-row',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-member-row.component.css']
 })
 export class TeamMemberRowComponent implements OnInit {
+  @Input() teamMember: TeamMember;
 
-  constructor() { }
+  constructor(public cacheService: CacheService) {
+  }
 
   ngOnInit() {
   }

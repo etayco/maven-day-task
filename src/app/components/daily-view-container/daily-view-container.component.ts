@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-daily-view',
-  templateUrl: './daily-view.component.html',
-  styleUrls: ['./daily-view.component.css']
+  selector: 'app-daily-view-container',
+  templateUrl: './daily-view-container.component.html',
+  styleUrls: ['./daily-view-container.component.css']
 })
-export class DailyViewComponent implements OnInit {
+export class DailyViewContainerComponent implements OnInit {
 
   constructor() { }
 

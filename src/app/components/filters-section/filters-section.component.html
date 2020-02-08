@@ -1,1 +1,7 @@
-<p>filters works!</p>
+<div class="filters-container">
+  <mat-checkbox *ngFor="let currentTeamViewObject of filterState.teamsViewObjects$ | async"
+                class="filter-checkbox" [(ngModel)]="currentTeamViewObject.shouldShow"
+                [labelPosition]="'after'">
+    {{currentTeamViewObject.objectData.name}}
+  </mat-checkbox>
+</div>

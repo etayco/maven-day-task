@@ -1,12 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Task} from '../../classes/task';
 import {CacheService} from '../../services/cache.service';
 import {TaskType} from '../../enums/task-type.enum';
 
+/**
+ * Component to show daily task.
+ */
 @Component({
   selector: 'app-daily-task',
   templateUrl: './daily-task.component.html',
-  styleUrls: ['./daily-task.component.css']
+  styleUrls: ['./daily-task.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DailyTaskComponent implements OnInit {
   @Input() taskId: number;
@@ -20,18 +24,23 @@ export class DailyTaskComponent implements OnInit {
     if (this.taskId && this.taskId !== null) {
       this.cacheService.getTaskByTaskId(this.taskId).subscribe(receivedTask => {
         this.task = receivedTask;
-        const todayDate: Date = new Date();
 
         if (receivedTask.type === TaskType.CONTINUOUS) {
-          if (this.task.startDate.toDateString() === todayDate.toDateString()) {
-            this.taskStatus = 'STARTED TODAY';
-          } else if (this.task.endDate.toDateString() === todayDate.toDateString()) {
-            this.taskStatus = 'LAST DAY';
-          } else {
-            this.taskStatus = 'ONGOING';
-          }
+          this.setContinuousTaskStatus();
         }
       });
+    }
+  }
+
+  private setContinuousTaskStatus() {
+    const todayDate: Date = new Date();
+
+    if (this.task.startDate.toDateString() === todayDate.toDateString()) {
+      this.taskStatus = 'STARTED TODAY';
+    } else if (this.task.endDate.toDateString() === todayDate.toDateString()) {
+      this.taskStatus = 'LAST DAY';
+    } else {
+      this.taskStatus = 'ONGOING';
     }
   }
 }

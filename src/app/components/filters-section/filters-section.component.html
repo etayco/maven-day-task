@@ -1,6 +1,6 @@
-<div class="filters-container">
+<div class="filters-container flex-row">
   <mat-checkbox *ngFor="let currentTeamFilterableObject of filterState.teamsFilterableObjects$ | async"
-                class="filter-checkbox" [(ngModel)]="currentTeamFilterableObject.shouldShow"
+                class="filter-checkbox flex-column" [(ngModel)]="currentTeamFilterableObject.shouldShow"
                 [labelPosition]="'after'">
     {{currentTeamFilterableObject.objectData.name}}
   </mat-checkbox>

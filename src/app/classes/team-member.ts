@@ -1,6 +1,9 @@
+/**
+ * This interface represents a team member.
+ */
 export interface TeamMember {
   id: number;
   name: string;
-  currentTaskId?: number;
   teamId: number;
+  currentTaskId?: number;
 }

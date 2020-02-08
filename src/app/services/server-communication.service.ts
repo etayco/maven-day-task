@@ -7,6 +7,9 @@ import {teamMembersAndTasksResponse} from '../classes/dtoClasses/teamMembersAndT
 import {forkJoin, Observable, of} from 'rxjs';
 import {map} from 'rxjs/internal/operators';
 
+/**
+ * This service is only a mock to represent the server.
+ */
 @Injectable({
   providedIn: 'root'
 })

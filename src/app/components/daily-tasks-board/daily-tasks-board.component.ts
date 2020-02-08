@@ -15,6 +15,6 @@ export class DailyTasksBoardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<{ title: string, poster: string }[]>) {
-    moveItemInArray(this.filterState.allTeamMembersList, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.filterState.allShownTeamMembersList, event.previousIndex, event.currentIndex);
   }
 }

@@ -8,6 +8,10 @@ import {map} from 'rxjs/internal/operators';
 import {teamMembersAndTasksResponse} from '../classes/dtoClasses/teamMembersAndTasksResponse';
 import {TaskType} from '../enums/task-type.enum';
 
+/**
+ * This is the cache service - it gets data from the server if needed and stores it once it's received.
+ * All data sits in maps to be easily acquired when needed.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +42,8 @@ export class CacheService {
     if (!this.teamIdToMembers.has(teamId)) {
       console.log('Team members of team ' + teamId + ' are not found in cache, getting from server');
 
-      return this.loadTeamMembersAndTasksByTeamIdIntoCache(teamId).pipe(map(receivedTeamMembersAndTasksResponse => receivedTeamMembersAndTasksResponse.teamMembers));
+      return this.loadTeamMembersAndTasksByTeamIdIntoCache(teamId).pipe(map(receivedTeamMembersAndTasksResponse =>
+        receivedTeamMembersAndTasksResponse.teamMembers));
     } else {
       console.log('Team members of team ' + teamId + ' are stored in cache, returning stored team members');
 
@@ -48,6 +53,8 @@ export class CacheService {
 
   public getTaskByTaskId(taskId: number): Observable<Task> {
     if (!this.tasksMap.has(taskId)) {
+      // Something went wrong as when team members are loaded from server their tasks should be loaded as well.
+      // If in the future we'll have a view for tasks without anything to do with team members we should implement new server calls.
       console.error('Task with id ' + taskId + ' can\'t be found in cache, something went wrong');
 
       return of({id: -1, name: 'Error getting current task', color: '#ff1e25', type: TaskType.SINGLE_DAY});
@@ -76,6 +83,11 @@ export class CacheService {
     return getTeamMembersAndTasksByTeamIdObservable;
   }
 
+  /**
+   * This function should be used only if we know we want to load all team members at once.
+   * It doesn't check if anything found in cache as it shouldn't be called if we expect it to return what's in the cache.
+   * @returns {Observable<TeamMember[]>}
+   */
   loadAllTeamMembersToCache(): Observable<TeamMember[]> {
     return this.loadAllTeamMembersAndTasksIntoCache().pipe(map(receivedMapResponse => {
       let teamMembersArrayToReturn: TeamMember[] = [];

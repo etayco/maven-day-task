@@ -1,6 +1,6 @@
 <div class="board-container" cdkDropList (cdkDropListDropped)="drop($event)">
   <div class="example-box"
-       *ngFor="let currentTeamMember of filterState.allTeamMembersList"
+       *ngFor="let currentTeamMember of filterState.allShownTeamMembersList"
        cdkDrag>
     <app-team-member-row [teamMember]="currentTeamMember"></app-team-member-row>
   </div>

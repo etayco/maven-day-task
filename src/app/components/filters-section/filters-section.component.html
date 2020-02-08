@@ -1,7 +1,7 @@
 <div class="filters-container">
-  <mat-checkbox *ngFor="let currentTeamViewObject of filterState.teamsViewObjects$ | async"
-                class="filter-checkbox" [(ngModel)]="currentTeamViewObject.shouldShow"
+  <mat-checkbox *ngFor="let currentTeamFilterableObject of filterState.teamsFilterableObjects$ | async"
+                class="filter-checkbox" [(ngModel)]="currentTeamFilterableObject.shouldShow"
                 [labelPosition]="'after'">
-    {{currentTeamViewObject.objectData.name}}
+    {{currentTeamFilterableObject.objectData.name}}
   </mat-checkbox>
 </div>
